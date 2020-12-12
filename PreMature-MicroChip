@@ -1,0 +1,27 @@
+import sys
+ 
+ 
+def solve(line):
+    x = [p == '1' for p in line.split()[0]]
+    k = int(line.split()[1])
+ 
+    flips = 0
+    i = 0
+    while i < (len(x) - k + 1):
+        if not x[i]:
+            for j in range(i,i + k):
+                x[j] = not x[j]
+            flips += 1
+        i += 1
+ 
+    if all(x):
+        return flips
+    return 'IMPOSSIBLE'
+ 
+ 
+ 
+if __name__ == '__main__':
+      cases = int(input().strip())
+      for i in range(cases):
+          line = input().strip()
+          print(solve(line))
